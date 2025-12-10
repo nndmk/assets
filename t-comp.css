@@ -141,7 +141,7 @@ a {
 }
 
 .sidebar-title {
-  font-family: var(--sans);
+  font-family: var(--dreamer);
   font-size: var(--xxl);
   font-weight: 400;
   margin-bottom: 0.5rem;
