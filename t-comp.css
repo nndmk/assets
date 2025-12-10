@@ -142,10 +142,11 @@ a {
 
 .sidebar-title {
   font-family: var(--dreamer);
-  font-size: var(--xxl);
+  font-size: var(--xxxl);
   font-weight: 400;
   margin-bottom: 0.5rem;
   color: var(--black);
+  letter-spacing: 2px;
 }
 
 
