@@ -1,4 +1,10 @@
-        body::after {
+@import url('https://fonts.cdnfonts.com/css/mellicka');
+
+:root {
+        --font-deco: 'Mellicka', sans-serif;
+}
+
+body::after {
             content: "";
             position: fixed;
             inset: 0;
@@ -141,7 +147,7 @@ a {
 }
 
 .sidebar-title {
-  font-family: var(--dreamer);
+  font-family: var(--font-deco);
   font-size: var(--xxxl);
   font-weight: 400;
   margin-bottom: 0.5rem;
