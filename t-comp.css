@@ -108,7 +108,7 @@ a {
   top: 0;
   height: 100vh;
   background: var(--mutedwhite);
-  border-right: 1px solid rgba(7, 5, 16, 0.1);
+  border-right: 1px solid var(--meteorite);
   overflow-y: auto; /* vertical scroll if needed */
   overflow-x: hidden; /* hide horizontal overflow */
   order: 2;
@@ -456,7 +456,7 @@ blockquote a:hover {
   text-transform: uppercase;
   font-size: var(--sm);
   color: var(--meteorite);
-  /* border: 1px solid var(--meteorite); */
+  border-top: 1px solid var(--meteorite);
   padding: 0.5rem;
   background-color: var(--pearl);
 }
@@ -464,7 +464,6 @@ blockquote a:hover {
 .post-meta a, .post-tag, .post-tag a, .meta-left, .meta-left a, .meta-left a span, .meta-right, .meta-right a, .meta-right a span{
   text-transform: uppercase;
   color: var(--black);
-  font-size: var(--xs);
   font-family: var(--mono);
   text-decoration: none;
   transition: all 0.3s ease;
@@ -479,14 +478,16 @@ blockquote a:hover {
 .post-actions {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   font-size: var(--sm);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: space-between;
 }
 
 .meta-left, .meta-right {
   display: flex;
-  flex-direction: row;
-  gap: 1rem;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .post-tags {
@@ -688,7 +689,13 @@ display: block;
   margin: 0
 }
 
+.fa-retweet, .fa-comment, .fa-clock {
+  font-size: 18px;
+}
 
+i+#text {
+  font-size: 18px;
+}
 
 .reblog-list .post-body figure, dl, h3, menu, ol, p, pre, ul {
   /* margin: 0.5em; */
@@ -729,10 +736,10 @@ display: block;
 /* Username */
 .post .reblog-item .reblog-header .reblog-username {
   font-weight: 600;
-  font-size: var(--sm);
+  font-size: var(--reg);
   color: var(--pearl);
   text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.8, 1, 0.36, 1);
+  transition: all 0.3s cubic-bezier(0.8, 1, 0.36, 1);
 }
 
 .post .reblog-item .reblog-header .reblog-username:hover {
@@ -934,6 +941,7 @@ display: block;
         flex-direction: row;
         align-items: flex-end;
         justify-content: center;
+  align-self: flex-end;
 }
 
 .post-tag a {
