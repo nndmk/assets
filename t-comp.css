@@ -309,10 +309,10 @@ a {
   width: 100%;
      background: var(--pearl);
   font-family: var(--serif);
-  font-size: var(--lg);
+  font-size: var(--xl);
   transition: all 0.3s cubic-bezier(0.8, 1, 0.36, 1);
   margin: 0.5em 0;
-  padding: 0;
+  padding: 0 0.5em;
  display: inline-block;
 }
 
@@ -325,9 +325,8 @@ a {
 .post-title a {
   text-decoration: none;
   color: inherit;
-  padding: 0 0.2rem;
   line-height: 1;
-  font-weight: 600;
+  font-weight: 400;
   transition: all 0.3s cubic-bezier(0.8, 1, 0.36, 1);
 }
 
