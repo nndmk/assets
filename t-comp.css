@@ -219,7 +219,7 @@ margin: 0!important;
   display: flex;
     align-items: center;
   background: transparent;
-  color: var(--meteorite);
+  color: var(--pearl);
   font-family: var(--mono);
   font-weight: 400;
   font-size: var(--xs);
@@ -228,12 +228,17 @@ margin: 0!important;
   transition: all 0.3s cubic-bezier(0.8, 1, 0.36, 1);
 }
 
-.nav-link:hover,
+.nav-link:hover {
+  background: transparent;
+  color: var(--lemon);
+  transition: all 0.3s cubic-bezier(0.8, 1, 0.36, 1);
+}
+
 .nav-link.active {
-  background: var(--pearl);
-  color: var(--darkruby);
+            color: var(--darkruby);
   transition: all 0.3s cubic-bezier(0.8, 1, 0.36, 1)
 }
+            
 
 /* Button styling */
 .follow-wrapper .tumblr-follow-button {
