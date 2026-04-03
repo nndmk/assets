@@ -767,7 +767,66 @@ i+#text {
 .reblog-body iframe {
   max-width: 100%;
 }
-  
+
+/* NPF OVERRIDE */
+                    .npf_indented:has(.npf_color_chandler) { 
+             border-top: 1px solid var(--meteorite)!important;
+             border: none;
+  padding: 16px 18px;
+  border-radius: 0;
+  margin: 20px 0;
+  background: var(--pearl)!important;
+        }
+
+blockquote.npf_indented span.npf_color_chandler,
+blockquote.npf_indented span.npf_color_monica, 
+blockquote.npf_indented span.npf_color_rachel,
+blockquote.npf_indented span.npf_color_ross {
+  color: var(--darkruby) !important;
+  font-size: var(--xs);
+  font-family: var(--sans);
+  display: inline-block;
+  text-align:start;
+    font-weight: 500;
+}
+
+blockquote.npf_indented span.npf_color_ross {
+    padding-bottom: 8px;
+    
+}
+
+blockquote.npf_indented span.npf_color_niles {
+    display: inline-block;
+    padding-top: 8px;    
+      color: var(--navy) !important;
+       font-size: var(--xs);
+  font-family: var(--mono);
+}
+
+blockquote.npf_indented span.npf_color_chandler:before {
+content: "My Rating:︎ ";    
+  font-weight: 400;
+}
+
+blockquote.npf_indented span.npf_color_monica:before {
+content: "Book Details:︎ ";    
+  font-weight: 400;
+}
+
+blockquote.npf_indented span.npf_color_rachel:before {
+content: "Publisher:︎ ";   
+  font-weight: 400;
+}
+
+blockquote.npf_indented span.npf_color_ross:before {
+content: "Format:︎ ";    
+  font-weight: 400;
+}
+
+blockquote.npf_indented span.npf_color_niles:before {
+content: "♥︎ ";    
+}
+
 /* -------------------------------------------------------------------------- */
 /*                               HIGHLIGHT COLOR                              */
 /* -------------------------------------------------------------------------- */
@@ -947,65 +1006,8 @@ i+#text {
 .post-tag a {
   font-size: 0.65rem;
 }
-
-/* NPF OVERRIDE */
-                    .npf_indented:has(.npf_color_chandler) { 
-             border-top: 1px solid var(--meteorite)!important;
-             border: none;
-  padding: 16px 18px;
-  border-radius: 0;
-  margin: 20px 0;
-  background: var(--pearl)!important;
-        }
-
-blockquote.npf_indented span.npf_color_chandler,
-blockquote.npf_indented span.npf_color_monica, 
-blockquote.npf_indented span.npf_color_rachel,
-blockquote.npf_indented span.npf_color_ross {
-  color: var(--darkruby) !important;
-  font-size: var(--xs);
-  font-family: var(--sans);
-  display: inline-block;
-  text-align:start;
-    font-weight: 500;
 }
 
-blockquote.npf_indented span.npf_color_ross {
-    padding-bottom: 8px;
-    
-}
-
-blockquote.npf_indented span.npf_color_niles {
-    display: inline-block;
-    padding-top: 8px;    
-      color: var(--navy) !important;
-       font-size: var(--xs);
-  font-family: var(--mono);
-}
-
-blockquote.npf_indented span.npf_color_chandler:before {
-content: "My Rating:︎ ";    
-  font-weight: 400;
-}
-
-blockquote.npf_indented span.npf_color_monica:before {
-content: "Book Details:︎ ";    
-  font-weight: 400;
-}
-
-blockquote.npf_indented span.npf_color_rachel:before {
-content: "Publisher:︎ ";   
-  font-weight: 400;
-}
-
-blockquote.npf_indented span.npf_color_ross:before {
-content: "Format:︎ ";    
-  font-weight: 400;
-}
-
-blockquote.npf_indented span.npf_color_niles:before {
-content: "♥︎ ";    
-}
 
 /* @media (max-width: 480px) {
   .content-area {
