@@ -312,8 +312,9 @@ a {
   font-size: var(--xl);
   transition: all 0.3s cubic-bezier(0.8, 1, 0.36, 1);
   margin: 0.5em 0;
-  padding: 0 0.5em;
+  padding: 0.2em 0.5em;
  display: inline-block;
+ line-height: 1;
 }
 
 .post-title:hover {
@@ -325,7 +326,6 @@ a {
 .post-title a {
   text-decoration: none;
   color: inherit;
-  line-height: 1;
   font-weight: 400;
   transition: all 0.3s cubic-bezier(0.8, 1, 0.36, 1);
 }
