@@ -138,7 +138,8 @@ a {
 .sidebar-header {
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  order: 1;
+  padding-top: 1.5rem;
 }
 
 .sidebar-title {
@@ -149,6 +150,9 @@ a {
   color: var(--black);
 }
 
+.sidebar-title h1 {
+margin: 0!important;
+}
 
 .sidebar-title a {
   line-height: 1;
@@ -203,11 +207,12 @@ a {
 }
 
 .nav-links {
-  padding-top: 1rem;
+  padding-bottom: 2rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 0.3rem;
     justify-content: space-between;
+    order: 2;
 }
 
 .nav-link{
