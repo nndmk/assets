@@ -143,11 +143,10 @@ a {
 
 .sidebar-title {
   font-family: var(--font-deco);
-  font-size: var(--xxxxl);
+  font-size: calc(var(--xxxxl) + 10%);
   font-weight: 400;
   margin-bottom: 0.5rem;
   color: var(--black);
-  letter-spacing: 2px;
 }
 
 
@@ -836,10 +835,6 @@ display: block;
     display: none;
   }
 
-  .sidebar-title {
-    font-size: var(--xl);
-    margin: 0;
-  }
   .sidebar-description {
     margin: 0;
     line-height: 1.2;
