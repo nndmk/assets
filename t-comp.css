@@ -313,9 +313,10 @@ a {
   transition: all 0.3s cubic-bezier(0.8, 1, 0.36, 1);
   margin: 0.5em 0;
   padding: 0;
+ display: inline-block;
 }
 
-.post-title h1:hover + .post-title a:hover {
+.post-title:hover {
   color: var(--pearl);
   background: var(--black);
    transition: all 0.3s cubic-bezier(0.8, 1, 0.36, 1);
@@ -323,7 +324,7 @@ a {
 
 .post-title a {
   text-decoration: none;
-  color: var(--black);
+  color: inherit;
   padding: 0 0.2rem;
   line-height: 1;
   font-weight: 600;
