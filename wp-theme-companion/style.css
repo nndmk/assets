@@ -3,6 +3,175 @@
 /*                  PAGE: READING LOG / BOOK LOG FROM TUMBLR                  */
 /* -------------------------------------------------------------------------- */
 
-.entry-title h1 {
-    font-family: var(--font-deco);
+/* VARIABLES FOR CARD DUOTONE */
+:root {
+  --base:        #1a4cff;
+  --bg-blend:    hard-light;
+  --fg-blend:    lighten;
+  --foreground:  #000000;
+  --blur:        0px;
+  --opacity:     1;
+  --spacing:     0px;
+}
+
+/* GRID */
+#tumblr-feed {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* CARD */
+.tumblr-card {
+  width: 100%;
+
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--base);
+  border: 1px solid var(--ast-global-color-2);
+  cursor: pointer;
+}
+
+/* IMAGE */
+.tumblr-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+
+  /* DUOTONE DEFAULT */
+  filter: grayscale(100%) contrast(1) blur(var(--blur));
+  mix-blend-mode: var(--bg-blend);
+  opacity: var(--opacity);
+
+  transition:
+    filter 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    mix-blend-mode 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* DUOTONE OVERLAY */
+.tumblr-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-color: var(--foreground);
+  mix-blend-mode: var(--fg-blend);
+
+  z-index: 1;
+
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* HOVER → ORIGINAL IMAGE */
+.tumblr-card:hover img {
+  filter: none;
+  mix-blend-mode: normal;
+}
+
+.tumblr-card:hover::before {
+  opacity: 0;
+}
+
+/* TEXT OVERLAY */
+.card-overlay {
+  bottom: 0;
+  width: 100%;
+  padding: 12px;
+
+  background: var(--ast-global-color-4);
+  color: var(--ast-global-color-2);
+  border-top: 1px solid var(--ast-global-color-2);
+
+  z-index: 2;
+}
+
+.card-overlay h3 {
+  font-size: var(--tiga);
+  font-family: var(--font-text);
+  margin: 0;
+}
+
+.card-overlay .rating {
+  display: block;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.card-overlay .status {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 11px;
+  padding: 2px 8px;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 20px;
+}
+
+#tumblr-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-content {
+        box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-inner {
+  background: var(--ast-global-color-4);
+  width: 100%;
+  max-height: 100vh;
+  overflow-y: auto;
+  padding: 2rem  4rem;
+  align-content: center;
+  border-radius: 0;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: var(--lima);
+  color: inherit;
+  cursor: pointer;
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.close:hover{
+    color: var(--ast-global-color-5);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.popup-content img {
+     width: 60%;
+    margin: 16px 0;
+    align-self: center;
+}
+
+figure.tmblr-full {
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-content p {
+  line-height: 1.7;
+  margin-bottom: 14px;
+  text-align: justify;
+  font-size: var(--flexmobile);
+}
+
+.popup-content p::first-letter {
+  text-transform: uppercase; 
 }
