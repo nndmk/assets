@@ -81,25 +81,29 @@
           // 🟦 CARD
           const card = document.createElement("div");
           card.className = "tumblr-card";
+          
+card.innerHTML = `
+  ${image ? `<img src="${image}">` : ""}
+  <div class="card-overlay">
+    <h3>${post.summary}</h3>
 
-          card.innerHTML = `
-            ${image ? `<img src="${image}">` : ""}
-            <div class="card-overlay">
-              <h3>${post.summary}</h3>
-              
-              <div class="book-info">
-              ${titleLine ? `<p class="meta-title">${titleLine}</p>` : ""}
-              ${publisher ? `<p class="meta-publisher">${publisher}</p>` : ""}
-              </div>
-              <div class="book-info-2nd">
-              ${rating ? `<span class="rating">${rating}</span>` : ""}
-              ${status ? `<span class="status">${status}</span>` : ""}
-              </div>
-              <div class="remarks">
-              ${remarks ? `<span>${remarks}</span>` : ""}
-              </div>
-            </div>
-          `;
+    ${(titleLine || publisher) ? `
+      <div class="book-info">
+        ${titleLine ? `<p class="meta-title">${titleLine}</p>` : ""}
+        ${publisher ? `<p class="meta-publisher">${publisher}</p>` : ""}
+      </div>
+    ` : ""}
+
+    ${(rating || status) ? `
+      <div class="book-info-2nd">
+        ${rating ? `<span class="rating">${rating}</span>` : ""}
+        ${status ? `<span class="status">${status}</span>` : ""}
+      </div>
+    ` : ""}
+
+    ${remarks ? `<p class="remarks">${remarks}</p>` : ""}
+  </div>
+`;
 
           container.appendChild(card);
 
