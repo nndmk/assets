@@ -1,3 +1,53 @@
+// 🟢 POPUP LENIS STATE
+let popupLenis = null;
+let popupRAF = null;
+
+// 🟢 START POPUP SCROLL
+function startPopupScroll() {
+  const popupInner = document.querySelector(".popup-inner");
+  if (!popupInner) return;
+
+  // stop main Lenis
+  if (window.lenis) window.lenis.stop();
+
+  // prevent background scroll
+  document.body.style.overflow = "hidden";
+
+  // create popup Lenis
+  popupLenis = new Lenis({
+    wrapper: popupInner,
+    content: popupInner,
+    smooth: true,
+    wheelMultiplier: 1,
+    touchMultiplier: 1
+  });
+
+  function raf(time) {
+    popupLenis.raf(time);
+    popupRAF = requestAnimationFrame(raf);
+  }
+
+  popupRAF = requestAnimationFrame(raf);
+}
+
+// 🔴 STOP POPUP SCROLL
+function stopPopupScroll() {
+  if (popupLenis) {
+    popupLenis.destroy();
+    popupLenis = null;
+  }
+
+  if (popupRAF) {
+    cancelAnimationFrame(popupRAF);
+    popupRAF = null;
+  }
+
+  // resume main Lenis
+  if (window.lenis) window.lenis.start();
+
+  document.body.style.overflow = "";
+}
+
 (function () {
   console.log("Tumblr script started");
 
@@ -52,10 +102,8 @@
           temp.querySelectorAll("blockquote").forEach(bq => {
             if (bq.querySelector(".npf_color_chandler")) {
 
-              // ⭐ Rating
               rating = bq.querySelector(".npf_color_chandler")?.textContent.trim() || "";
 
-              // 📚 Title + Author (merge ALL monica)
               const monicaNodes = bq.querySelectorAll(".npf_color_monica");
               if (monicaNodes.length > 0) {
                 titleLine = Array.from(monicaNodes)
@@ -63,16 +111,10 @@
                   .join(" ");
               }
 
-              // 🏢 Publisher
               publisher = bq.querySelector(".npf_color_rachel")?.textContent.trim() || "";
-
-              // 📦 Status
               status = bq.querySelector(".npf_color_ross")?.textContent.trim() || "";
-
-              // ✍️ Remarks
               remarks = bq.querySelector(".npf_color_niles")?.textContent.trim() || "";
 
-              // ❌ Remove metadata from popup
               bq.remove();
             }
           });
@@ -114,6 +156,7 @@
           card.addEventListener("click", () => {
             popupContent.innerHTML = temp.innerHTML;
             popup.classList.add("active");
+            startPopupScroll();
           });
         });
       })
@@ -131,6 +174,7 @@
           e.target.id === "tumblr-popup"
         ) {
           popup.classList.remove("active");
+          stopPopupScroll();
         }
       });
     }
