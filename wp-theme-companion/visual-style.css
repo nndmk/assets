@@ -1,0 +1,126 @@
+/* Copyright (c) 2026 - Nonatized.Space Theme.
+Please do not redistribute or modify this code without permission.
+for more information, visit https://nonatized.space.
+All rights reserved. */
+
+
+:root {
+
+/* -------------------------------------------------------------------------- */
+/*                                   COLORS                                   */
+/* -------------------------------------------------------------------------- */
+  --ruby: var(--ast-global-color-0);
+  --wine: var(--ast-global-color-1);
+  --noir: var(--ast-global-color-2);
+  --crimson: var(--ast-global-color-8);
+  --sky: var(--ast-global-color-7);
+  --white: var(--ast-global-color-5);
+  --mint: var(--ast-global-color-6);
+
+/* -------------------------------------------------------------------------- */
+/*                                    FONTS                                   */
+/* -------------------------------------------------------------------------- */
+/* 1. Primary Font */
+  --cossette: 'Cossette Titre',sans-serif;
+  --heading: var(--cossette);
+
+/* 2. Secondary Font / Body*/
+  --geist: 'Geist',sans-serif;
+  --sans: var(--geist);
+
+/* 3. Decorative Font */
+  --mellicka: 'Mellicka', cursive;
+  --decorative: var(--mellicka);
+
+/* 4. Monospace Font */
+  --mono: 'Geist Mono', monospace;
+
+/* 5. Serif Font */
+    --serif: 'Newsreader', serif;
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 FONT SIZES                                 */
+/* -------------------------------------------------------------------------- */
+  --kecil: clamp(0.75rem, 0.72rem + 0.2vw, 0.875rem);  /* ~12px → 14px */
+  --satu: clamp(0.875rem, 0.84rem + 0.3vw, 1rem);     /* ~14px → 16px */
+  --dua: clamp(1rem, 0.95rem + 0.4vw, 1.125rem);   /* ~16px → 18px */
+  --tiga: clamp(1.125rem, 1.05rem + 0.5vw, 1.25rem);  /* ~18px → 20px */
+  --empat: clamp(1.25rem, 1.1rem + 0.8vw, 1.5rem);     /* ~20px → 24px */
+  --lima: clamp(1.5rem, 1.3rem + 1vw, 2rem);          /* ~24px → 32px */
+  --enam: clamp(2rem, 1.6rem + 1.5vw, 2.5rem);       /* ~32px → 40px */
+  --tujuh: clamp(2.5rem, 2rem + 2vw, 3.5rem);         /* ~40px → 56px */
+  --delapan: clamp(3rem, 2.4rem + 3vw, 4.5rem);         /* ~48px → 72px */
+  --flexmobile: clamp(0.85rem, 0.8vw + 0.6rem, 1.5rem);
+
+/* -------------------------------------------------------------------------- */
+/*                                 TRANSITION                                 */
+/* -------------------------------------------------------------------------- */
+    --buttery: cubic-bezier(0.22, 1, 0.36, 1);
+
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                             STYLES: TYPOGRAPHY                             */
+/* -------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6, p, a, span, li {
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              GRAIN OVERLAY                                 */
+/* -------------------------------------------------------------------------- */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("https://nndmk.github.io/assets/nonatizedgrainbg.webp");
+    background-repeat: repeat;
+    background-size: auto;
+    opacity: 0.15;
+    mix-blend-mode: hard-light;
+    pointer-events: none;
+    z-index: 15000;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              HIGHLIGHT COLORS                              */
+/* -------------------------------------------------------------------------- */
+/* Highlight Colors */
+::-moz-selection {
+    background-color: var(--wine);
+    color: var(--white);
+}
+
+::selection {
+    background-color: var(--wine);
+    color: var(--white);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--white);
+    border-left: 1px solid var(--crimson);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--ruby);
+    border-radius: 0;
+    transition: all 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--wine);
+}
+
+::-webkit-scrollbar-corner {
+    background: var(--white);
+}
