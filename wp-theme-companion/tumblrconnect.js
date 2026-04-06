@@ -1,21 +1,21 @@
 (function () {
-  console.log("âœ… Tumblr script started");
+  console.log("✅ Tumblr script started");
 
   function runTumblr() {
     const container = document.getElementById("tumblr-feed");
     const popup = document.getElementById("tumblr-popup");
 
     if (!container) {
-      console.log("âŒ tumblr-feed not found");
+      console.log("❌ tumblr-feed not found");
       return;
     }
 
     if (!popup) {
-      console.log("âŒ popup not found");
+      console.log("❌ popup not found");
       return;
     }
 
-    // ðŸ”¥ MOVE POPUP OUTSIDE ELEMENTOR (CRITICAL FIX)
+    // 🔥 Move popup outside Elementor (CRITICAL)
     document.body.appendChild(popup);
 
     const popupContent = popup.querySelector(".popup-content");
@@ -29,7 +29,7 @@
         const posts = data.response;
 
         if (!posts || posts.length === 0) {
-          console.log("âŒ No posts found");
+          console.log("❌ No posts found");
           return;
         }
 
@@ -39,33 +39,46 @@
           const temp = document.createElement("div");
           temp.innerHTML = content;
 
-          // ðŸ§  METADATA EXTRACTION
+          // 🧠 METADATA EXTRACTION (FINAL STRUCTURE)
           let rating = "";
-          let bookTitle = "";
-          let author = "";
+          let titleLine = "";
+          let publisher = "";
           let status = "";
+          let remarks = "";
 
           temp.querySelectorAll("blockquote").forEach(bq => {
             if (bq.querySelector(".npf_color_chandler")) {
+
+              // ⭐ Rating
               rating = bq.querySelector(".npf_color_chandler")?.textContent.trim() || "";
 
-              const monica = bq.querySelectorAll(".npf_color_monica");
-              if (monica.length > 0) {
-                bookTitle = monica[0].textContent.trim();
-                if (monica[1]) author = monica[1].textContent.trim();
+              // 📚 Title + Author (merge all monica spans)
+              const monicaNodes = bq.querySelectorAll(".npf_color_monica");
+              if (monicaNodes.length > 0) {
+                titleLine = Array.from(monicaNodes)
+                  .map(el => el.textContent.trim())
+                  .join("");
               }
 
+              // 🏢 Publisher
+              publisher = bq.querySelector(".npf_color_rachel")?.textContent.trim() || "";
+
+              // 📦 Status
               status = bq.querySelector(".npf_color_ross")?.textContent.trim() || "";
 
-              bq.remove(); // remove from popup
+              // ✍️ Remarks
+              remarks = bq.querySelector(".npf_color_niles")?.textContent.trim() || "";
+
+              // ❌ remove metadata from popup
+              bq.remove();
             }
           });
 
-          // ðŸ–¼ IMAGE
+          // 🖼 IMAGE
           const img = temp.querySelector("img");
           const image = img ? img.src : "";
 
-          // ðŸŸ¦ CARD
+          // 🟦 CARD
           const card = document.createElement("div");
           card.className = "tumblr-card";
 
@@ -73,16 +86,19 @@
             ${image ? `<img src="${image}">` : ""}
             <div class="card-overlay">
               <h3>${post.summary}</h3>
-              ${bookTitle ? `<p class="meta-title">${bookTitle}</p>` : ""}
-              ${author ? `<p class="meta-author">${author}</p>` : ""}
+
+              ${titleLine ? `<p class="meta-title">${titleLine}</p>` : ""}
+              ${publisher ? `<p class="meta-publisher">${publisher}</p>` : ""}
+
               ${rating ? `<span class="rating">${rating}</span>` : ""}
               ${status ? `<span class="status">${status}</span>` : ""}
+              ${remarks ? `<span class="remarks">${remarks}</span>` : ""}
             </div>
           `;
 
           container.appendChild(card);
 
-          // ðŸŸ£ OPEN POPUP
+          // 🟣 OPEN POPUP
           card.addEventListener("click", () => {
             popupContent.innerHTML = temp.innerHTML;
             popup.classList.add("active");
@@ -90,10 +106,10 @@
         });
       })
       .catch(err => {
-        console.error("âŒ Fetch error:", err);
+        console.error("❌ Fetch error:", err);
       });
 
-    // ðŸ”´ CLOSE POPUP
+    // 🔴 CLOSE POPUP
     document.addEventListener("click", function (e) {
       if (e.target.classList.contains("close") || e.target.id === "tumblr-popup") {
         popup.classList.remove("active");
@@ -101,7 +117,7 @@
     });
   }
 
-  // ðŸ” Wait until Elementor is ready
+  // 🔁 Wait until Elementor is ready
   let tries = 0;
   const interval = setInterval(() => {
     if (document.getElementById("tumblr-feed") || tries > 10) {
