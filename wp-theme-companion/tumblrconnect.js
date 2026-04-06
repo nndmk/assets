@@ -86,13 +86,18 @@
             ${image ? `<img src="${image}">` : ""}
             <div class="card-overlay">
               <h3>${post.summary}</h3>
-
+              
+              <div class="book-info">
               ${titleLine ? `<p class="meta-title">${titleLine}</p>` : ""}
               ${publisher ? `<p class="meta-publisher">${publisher}</p>` : ""}
-
+              </div>
+              <div class="book-info-2nd">
               ${rating ? `<span class="rating">${rating}</span>` : ""}
               ${status ? `<span class="status">${status}</span>` : ""}
-              ${remarks ? `<span class="remarks">${remarks}</span>` : ""}
+              </div>
+              <div class="remarks">
+              ${remarks ? `<span>${remarks}</span>` : ""}
+              </div>
             </div>
           `;
 
