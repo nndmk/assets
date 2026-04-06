@@ -1,15 +1,24 @@
 (function () {
-  console.log("✅ Tumblr script started");
+  console.log("âœ… Tumblr script started");
 
   function runTumblr() {
     const container = document.getElementById("tumblr-feed");
+    const popup = document.getElementById("tumblr-popup");
 
     if (!container) {
-      console.log("❌ tumblr-feed not found");
+      console.log("âŒ tumblr-feed not found");
       return;
     }
 
-    console.log("✅ tumblr-feed found");
+    if (!popup) {
+      console.log("âŒ popup not found");
+      return;
+    }
+
+    // ðŸ”¥ MOVE POPUP OUTSIDE ELEMENTOR (CRITICAL FIX)
+    document.body.appendChild(popup);
+
+    const popupContent = popup.querySelector(".popup-content");
 
     const apiKey = "9kGkJbaNvoKWemjE77YLgn74ullAmqEoInADgG91mCT6SQwhwQ";
     const tag = "nonatizedbook";
@@ -17,12 +26,10 @@
     fetch(`https://api.tumblr.com/v2/tagged?tag=${tag}&api_key=${apiKey}&filter=raw`)
       .then(res => res.json())
       .then(data => {
-        console.log("📦 API:", data);
-
         const posts = data.response;
 
         if (!posts || posts.length === 0) {
-          console.log("❌ No posts found");
+          console.log("âŒ No posts found");
           return;
         }
 
@@ -32,7 +39,7 @@
           const temp = document.createElement("div");
           temp.innerHTML = content;
 
-          // 🧠 METADATA
+          // ðŸ§  METADATA EXTRACTION
           let rating = "";
           let bookTitle = "";
           let author = "";
@@ -54,11 +61,11 @@
             }
           });
 
-          // 🖼 IMAGE
+          // ðŸ–¼ IMAGE
           const img = temp.querySelector("img");
           const image = img ? img.src : "";
 
-          // 🟦 CARD
+          // ðŸŸ¦ CARD
           const card = document.createElement("div");
           card.className = "tumblr-card";
 
@@ -75,23 +82,26 @@
 
           container.appendChild(card);
 
-          // 🟣 POPUP
+          // ðŸŸ£ OPEN POPUP
           card.addEventListener("click", () => {
-            const popup = document.getElementById("tumblr-popup");
-            const popupContent = document.querySelector(".popup-content");
-
             popupContent.innerHTML = temp.innerHTML;
-
-            popup.style.display = "flex";
+            popup.classList.add("active");
           });
         });
       })
       .catch(err => {
-        console.error("❌ Fetch error:", err);
+        console.error("âŒ Fetch error:", err);
       });
+
+    // ðŸ”´ CLOSE POPUP
+    document.addEventListener("click", function (e) {
+      if (e.target.classList.contains("close") || e.target.id === "tumblr-popup") {
+        popup.classList.remove("active");
+      }
+    });
   }
 
-  // wait for Elementor
+  // ðŸ” Wait until Elementor is ready
   let tries = 0;
   const interval = setInterval(() => {
     if (document.getElementById("tumblr-feed") || tries > 10) {
@@ -100,13 +110,4 @@
     }
     tries++;
   }, 300);
-
-  // CLOSE POPUP
-  document.addEventListener("click", function (e) {
-    const popup = document.getElementById("tumblr-popup");
-
-    if (e.target.classList.contains("close") || e.target.id === "tumblr-popup") {
-      popup.style.display = "none";
-    }
-  });
 })();
