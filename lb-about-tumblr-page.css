@@ -136,7 +136,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: url("/lb-on-tumblr/images/bg-about-page.webp");
+  background-image: url("https://i.pinimg.com/1200x/d3/64/4e/d3644e7895b971e6246fb373028d3c9f.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   mix-blend-mode: multiply;
