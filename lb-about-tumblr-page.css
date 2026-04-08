@@ -1,0 +1,216 @@
+@import url('https://fonts.cdnfonts.com/css/mellicka');
+@import url('https://fonts.googleapis.com/css2?family=Cossette+Titre:wght@400;700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+/* Copyright (c) 2026 - Nonatized.Space Theme.
+Please do not redistribute or modify this code without permission.
+for more information, visit https://nonatized.space.
+All rights reserved. */
+
+:root {
+    --ruby: #630100;
+    --wine: #411725;
+    --noir: #01010e;
+    --white: #fdfffc;
+    --mint: #bee8da;
+    --sky: #acc6dd;
+    --crimson: #ac0e0e;
+
+    --mellicka: 'Mellicka', cursive;
+    --cossette: 'Cossette Titre', serif;
+    --jakarta: 'Plus Jakarta Sans', sans-serif;
+
+    /* -------------------------------------------------------------------------- */
+/*                                 FONT SIZES                                 */
+/* -------------------------------------------------------------------------- */
+  --kecil: clamp(0.75rem, 0.72rem + 0.2vw, 0.875rem);  /* ~12px → 14px */
+  --satu: clamp(0.875rem, 0.84rem + 0.3vw, 1rem);     /* ~14px → 16px */
+  --dua: clamp(1rem, 0.95rem + 0.4vw, 1.125rem);   /* ~16px → 18px */
+  --tiga: clamp(1.125rem, 1.05rem + 0.5vw, 1.25rem);  /* ~18px → 20px */
+  --empat: clamp(1.25rem, 1.1rem + 0.8vw, 1.5rem);     /* ~20px → 24px */
+  --lima: clamp(1.5rem, 1.3rem + 1vw, 2rem);          /* ~24px → 32px */
+  --enam: clamp(2rem, 1.6rem + 1.5vw, 2.5rem);       /* ~32px → 40px */
+  --tujuh: clamp(2.5rem, 2rem + 2vw, 3.5rem);         /* ~40px → 56px */
+  --delapan: clamp(3rem, 2.4rem + 3vw, 4.5rem);         /* ~48px → 72px */
+  --flexmobile: clamp(0.85rem, 0.8vw + 0.6rem, 1.5rem);
+
+/* -------------------------------------------------------------------------- */
+/*                                 TRANSITION                                 */
+/* -------------------------------------------------------------------------- */
+    --buttery: cubic-bezier(0.22, 1, 0.36, 1);
+
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                             STYLES: TYPOGRAPHY                             */
+/* -------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6, p, a, span, li {
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              GRAIN OVERLAY                                 */
+/* -------------------------------------------------------------------------- */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("https://wp-comp-nonatized.netlify.app/images/nonatizedgrainbg.webp");
+    background-repeat: repeat;
+    background-size: auto;
+    opacity: 0.8;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 15000;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                              HIGHLIGHT COLORS                              */
+/* -------------------------------------------------------------------------- */
+/* Highlight Colors */
+::-moz-selection {
+    background-color: var(--wine);
+    color: var(--white);
+}
+
+::selection {
+    background-color: var(--wine);
+    color: var(--white);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--white);
+    border-left: 1px solid var(--crimson);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--ruby);
+    border-radius: 0;
+    transition: all 0.2s var(--buttery);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--wine);
+}
+
+::-webkit-scrollbar-corner {
+    background: var(--white);
+}
+
+
+h1, h2, h3, h4, h5, h6, p, a, span, li {
+     -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   font-optical-sizing: auto;
+  font-style: normal;
+  font-smooth: always;
+}
+
+
+p, a, span, li {
+      font-size: calc(var(--dua) + 2pt);
+}
+
+body {
+  margin: 0;
+  font-family: var(--jakarta);
+  color: var(--white);
+  text-align: center;
+  background-color: var(--wine);
+  opacity: 1;
+  margin: 0;
+
+   z-index: 10000;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("/lb-on-tumblr/images/bg-about-page.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  mix-blend-mode: multiply;
+  opacity: 1;
+  z-index: -1;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    max-width: 1080px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.about p {
+    margin-bottom: 0;
+    text-align: justify;
+}
+
+.text {
+  background: var(--wine);
+  max-height: 350px;
+  overflow: auto;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+}
+.container {
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  font-size: calc(var(--delapan) + 1rem);
+  font-weight: 400;
+  font-family: var(--mellicka);
+  letter-spacing: 2pt;
+}
+
+#profile img {
+  width: 60px;
+  border-radius: 50%;
+  margin-top: 8px;
+}
+
+.grid {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.card {
+  width: 120px;
+  transition: transform 0.2s var(--buttery);
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.title {
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+#status {
+  margin-top: 10px;
+  opacity: 0.6;
+  font-size: 12px;
+}
